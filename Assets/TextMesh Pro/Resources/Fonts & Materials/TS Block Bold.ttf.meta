@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b6447c0f8ee50b04ba686ac9444db343
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TS Block Bold
+  fontNames:
+  - TS Block Bold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c4aaa77346a242945a1bd1f799cc65ff, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
