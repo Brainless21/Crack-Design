@@ -46,9 +46,13 @@ public class FlexibleGridLayout : LayoutGroup
         float parentWidth = rectTransform.rect.width;
         float parentHeight = rectTransform.rect.height;
 
-        // daraus wird dann hier errechnet, wie groß eine zelle sein kann, um ins grid zu passen
-        float cellWidth = parentWidth / (float)columns - ((spacing.x / (float)columns) *2) - (padding.left / (float) columns) - (padding.right / (float) columns);
-        float cellHeight = parentHeight / (float)rows - ((spacing.y / (float)rows) *2) -  (padding.top / (float) rows) - (padding.bottom / (float) rows);
+        // errechnet, basierend auf dem padding, spacing und #of rows/columns wie viel space den objekten am ende tatsächlich zur verfügung steht
+        float availableWidth = parentWidth - padding.right - padding.left - (spacing.x * (columns-1));
+        float availableHeight = parentHeight - padding.top - padding.bottom - (spacing.y * (rows-1));
+
+        // daraus wird dann hier errechnet, wie groß eine zelle sein kann, um ins grid zu passen. der verfügbare platz wird aufgeteilt auf die nummer an reihen und zeilen
+        float cellWidth = availableWidth / (float)columns;
+        float cellHeight = availableHeight / (float)rows;
 
         // set the cellSize Vector with the newfound information
         cellSize.x = cellWidth;
