@@ -5,19 +5,42 @@ using UnityEngine.UI;
 
 public class FlexibleGridLayout : LayoutGroup
 {
+    public enum FitType
+    {
+        Uniform,
+        Width,
+        Height,
+        FixedRows,
+        FixedColumns
+    }
     public int rows; // wie viele reihen es am ende gibt
     public int columns; // wie viele zeilen es am ende gibt
     public Vector2 cellSize; // wie groß jede zelle sein kann
     public Vector2 spacing;
+   // public bool fitX;
+   // public bool fitY;
+    public FitType fitType;
     public override void CalculateLayoutInputHorizontal()
     {
         base.CalculateLayoutInputHorizontal();
 
         float sqrRt = Mathf.Sqrt(transform.childCount); // wurzel der anzuordnenden objekte
        
-        // die wurzel aufgerunded ergibt die anzahl an reihen und spalten die benötigt werden um alles unterzubringen (squarely)
-        rows = Mathf.CeilToInt(sqrRt);
-        columns = Mathf.CeilToInt(sqrRt);
+       if(fitType == FitType.Width ||fitType == FitType.Height || fitType == FitType.Uniform)
+       {
+            // die wurzel aufgerunded ergibt die anzahl an reihen und spalten die benötigt werden um alles unterzubringen (squarely)
+            rows = Mathf.CeilToInt(sqrRt);
+            columns = Mathf.CeilToInt(sqrRt);
+       }
+        if(fitType == FitType.Width)
+        {
+            rows = Mathf.CeilToInt(transform.childCount / (float)columns);
+        }
+
+        if(fitType == FitType.Height)
+        {
+            columns = Mathf.CeilToInt(transform.childCount / (float)rows);
+        }
 
         // hier wird geschaut, wie viel platz insgesamt zur verfügung steht
         float parentWidth = rectTransform.rect.width;
@@ -54,16 +77,16 @@ public class FlexibleGridLayout : LayoutGroup
 
     public override void CalculateLayoutInputVertical()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void SetLayoutHorizontal()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void SetLayoutVertical()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
