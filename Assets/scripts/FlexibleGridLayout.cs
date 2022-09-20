@@ -71,7 +71,7 @@ public class FlexibleGridLayout : LayoutGroup
 
             // plaziert das objekt an seinem passenden platz
             SetChildAlongAxis(item, 0, xPos, cellSize.x);
-            SetChildAlongAxis(item, 0, cellSize.y);
+            SetChildAlongAxis(item, 1, yPos, cellSize.y);
         }
     }
 
