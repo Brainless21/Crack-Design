@@ -18,17 +18,17 @@ public class TabButton : Entity
 
     public override void MouseEnter(Vector3Int cords, List<Vector3Int> shape)
     {
-        base.MouseEnter(cords, shape);
+        tabGroup.OnTabEnter(this);
     }
 
     public override void MouseExit(Vector3Int cords, List<Vector3Int> shape)
     {
-        base.MouseExit(cords, shape);
+        tabGroup.OnTabExit(this);
     }
 
     public override void MouseInteractionLeft(Vector3Int cords)
     {
-        base.MouseInteractionLeft(cords);
+        tabGroup.OnTabSelected(this);
     }
 
 }
